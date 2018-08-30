@@ -1,21 +1,27 @@
 const express = require('express');
 const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const path = require('path');
 
+// EXPRESS
 const app = express();
-
-// app.get('/', (req, res) => res.send('Hello World!'))
 
 
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({extended: true}));
+
+// express-handlebars
 app.engine('hbs', hbs({defaultLayout: 'main', extname: 'hbs'}));
 app.set('view engine', 'hbs');
 
-// Set up a static public directory
+
+// static content
 app.use(express.static('./public'));
 
 
-// Route / Controller
-app.get('/', (req, res) => res.render('index'));
-app.listen(3020, () => console.log('Example app listening on port 3020!'))
+// ROUTES
+var routes = require('./routes/index');
+app.use('/', routes);
+// app.get('/', (req, res) => res.render('index'));
+
+app.listen(3000, () => console.log('Example app listening on port 3000!'))
