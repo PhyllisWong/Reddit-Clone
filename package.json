@@ -1,0 +1,23 @@
+{
+  "name": "reddit-clone",
+  "version": "1.0.0",
+  "description": "This project is a tutorial project to learn the more advanced concepts of designing a web backend.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhyllisWong/Reddit-Clone.git"
+  },
+  "author": "Phyllis Wong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PhyllisWong/Reddit-Clone/issues"
+  },
+  "homepage": "https://github.com/PhyllisWong/Reddit-Clone#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "handlebars": "^4.0.11"
+  }
+}
