@@ -22,18 +22,27 @@ app.set('view engine', 'hbs');
 // static content
 app.use(express.static('./public'));
 
+//******************   OLD WAY    ********************//
+// mongoose.Promise = global.Promise
+// mongoose.connect('mongodb://localhost/reddit-clone', { useMongoClient: true })
+// mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection Error:'))
 
+//******************   NEW WAY    ********************//
 // Mongoose Connection
 const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/reddit-clone";
 mongoose.connect(
 	mongoUri, { useNewUrlParser: true }
 );
+mongoose.set('debug', true);
+
+
 
 
 // ROUTES
-const routes = require('./controllers/index');
-app.use('/', routes);
-require('./controllers/posts.js')(app);
+const postController = require('./controllers/posts.js');
+app.use('/', postController);
+// require('./controllers/posts.js')();
+
 
 
 app.listen(port, () => {
