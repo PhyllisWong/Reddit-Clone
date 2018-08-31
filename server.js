@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const path = require('path');
 
 // EXPRESS
@@ -20,8 +21,9 @@ app.use(express.static('./public'));
 
 
 // ROUTES
-var routes = require('./routes/index');
+const routes = require('./controllers/index');
 app.use('/', routes);
-// app.get('/', (req, res) => res.render('index'));
+require('./controllers/posts.js')(app);
+
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
