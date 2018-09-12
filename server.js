@@ -3,6 +3,7 @@ const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+const postController = require('./controllers/posts.js');
 
 // Port
 const port = process.env.PORT || 3000;
@@ -39,12 +40,10 @@ mongoose.set('debug', true);
 
 
 // ROUTES
-const postController = require('./controllers/posts.js');
 app.use('/', postController);
-// require('./controllers/posts.js')();
 
 
-
+// Server
 app.listen(port, () => {
-	console.log('Example app listening on port 3000!');
+	console.log(`Example app listening on ${port}`);
 });
