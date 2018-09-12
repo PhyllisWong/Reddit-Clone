@@ -3,42 +3,42 @@ const router = express.Router();
 const Post = require('../models/posts.js');
 
 
-// Home route / index route Show all posts
+// Index route show all posts
 router.get('/', (req, res) => {
 	Post.find({}, (err, posts) => {
-		console.log(posts);
-		res.render('posts-index.hbs', {
-			posts: posts
-		});
+		res.render('posts-index.hbs', { posts: posts });
 	});
 });
 
-// Renders the form
-router.get('/posts/new', function(req, res) {
+// Renders the new post form
+router.get('/posts/new', (req, res)=> {
 	res.render('posts-new');
 });
 
 // Create post
 router.post('/posts/new', (req, res) => {
-	// INSTANTIATE INSTANCE OF POST MODEL
-	let post = new Post(req.body);
-	console.log(req.body);
 
-  // SAVE INSTANCE OF POST MODEL TO DB
+	let post = new Post(req.body);
   post.save((err, post) => {
-	// REDIRECT TO THE ROOT
-	return res.redirect('/');
+		return res.redirect('/');
 	})
 });
 
 // Show post by posts/:id
-router.get('/posts/:id', function (req, res) {
+router.get('/posts/:id', (req, res) => {
 	// LOOK UP THE POST
-	Post.findById(req.params.id).then((post) => {
-		res.render('post-show.hbs', { post })
-	}).catch((err) => {
-		console.log(err.message)
+	Post.findById(req.params.id)
+		.then( post => { res.render('post-show.hbs', { post }) })
+		.catch((err) => { console.log(err.message)
 	})
+});
+
+// SUBREDDIT
+router.get('/s/:subreddit', (req, res) => {
+	console.log(req.params.subreddit)
+	Post.find({ subreddit: req.params.subreddit })
+		.then( posts => { res.render('posts-index.hbs', { posts }) })
+		.catch( err => { console.log(err.message) })
 });
 
 

@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 describe('Posts', () => {
   it('should create with valid attributes at POST /posts', (done) => {
 
-    let post = {title: "post title", url: "https://www.google.com", summary: "post summary"};
+    let post = {title: "Test Post Title", url: "https://www.google.com", summary: "Test Post Summary"};
 
 
     Post.findOneAndRemove(post, () => {
@@ -16,7 +16,7 @@ describe('Posts', () => {
         let postCount = posts.count;
 
         chai.request('localhost:3000')
-          .post('/posts', post)
+          .post('/posts/new', post)
           .end((err, res) => {
 
             // Check that the database has one more post in it
