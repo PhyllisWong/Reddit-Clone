@@ -1,15 +1,14 @@
 const express = require('express');
+const app = express();
 const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const postController = require('./controllers/posts.js');
+const commentsController = require('./controllers/comments.js');
 
 // Port
 const port = process.env.PORT || 3000;
-
-// EXPRESS
-const app = express();
 
 
 // MIDDLEWARE
@@ -23,27 +22,24 @@ app.set('view engine', 'hbs');
 // static content
 app.use(express.static('./public'));
 
-//******************   OLD WAY    ********************//
-// mongoose.Promise = global.Promise
-// mongoose.connect('mongodb://localhost/reddit-clone', { useMongoClient: true })
-// mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection Error:'))
 
 //******************   NEW WAY    ********************//
 // Mongoose Connection
 const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/reddit-clone";
 mongoose.connect(
-	mongoUri, { useNewUrlParser: true }
+  mongoUri, { useNewUrlParser: true }
 );
 mongoose.set('debug', true);
 
 
 
-
 // ROUTES
 app.use('/', postController);
+commentsController(app);
+app.use('/',  commentsController);
 
 
 // Server
 app.listen(port, () => {
-	console.log(`Example app listening on ${port}`);
+	console.log(`Reddit Server listening on ${port}`);
 });

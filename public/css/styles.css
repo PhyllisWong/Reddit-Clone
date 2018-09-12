@@ -1,3 +1,13 @@
 .footer-scripts {
 	margin-left: 2rem;
 }
+
+.new-post-btn {
+	color: aliceblue;
+}
+
+/*ASK MITCHELL*/
+.home-icon {
+	/*background: dodgerblue !important;*/
+	.grayscale { filter: grayscale(100%); }
+}

@@ -27,10 +27,9 @@ router.post('/posts/new', (req, res) => {
 // Show post by posts/:id
 router.get('/posts/:id', (req, res) => {
 	// LOOK UP THE POST
-	Post.findById(req.params.id)
+	Post.findById(req.params.id).populate('comments')
 		.then( post => { res.render('post-show.hbs', { post }) })
-		.catch((err) => { console.log(err.message)
-	})
+		.catch((err) => { console.log(err.message) })
 });
 
 // SUBREDDIT
