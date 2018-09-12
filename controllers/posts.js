@@ -39,7 +39,7 @@ router.get('/posts/:id', function (req, res) {
 	}).catch((err) => {
 		console.log(err.message)
 	})
-})
+});
 
 
 module.exports = router;
