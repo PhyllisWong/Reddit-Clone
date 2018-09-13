@@ -35,7 +35,6 @@ mongoose.set('debug', true);
 
 // ROUTES
 app.use('/', postController);
-commentsController(app);
 app.use('/',  commentsController);
 
 
