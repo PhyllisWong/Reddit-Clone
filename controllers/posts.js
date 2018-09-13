@@ -28,7 +28,7 @@ router.post('/posts/new', (req, res) => {
 router.get('/posts/:id', (req, res) => {
 	// LOOK UP THE POST
 	Post.findById(req.params.id).populate('comments')
-		.then( post => { res.render('post-show.hbs', { post }) })
+		.then( post => { res.render('post-show', { post }) })
 		.catch((err) => { console.log(err.message) })
 });
 
