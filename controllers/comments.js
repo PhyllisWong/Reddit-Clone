@@ -4,6 +4,7 @@ const Comment = require('../models/comments');
 const Post = require('../models/posts');
 
 
+// Make a new comment
 router.post('/posts/:postId/comments', (req, res) => {
   // console.log('--- posts/:postId/comments ---');
   // console.log(req.body);
@@ -18,10 +19,10 @@ router.post('/posts/:postId/comments', (req, res) => {
       post.comments.unshift(comment);
       console.log(post);
       return post.save()
-  }).then((savedPost) => {
 
-    // GET Kendra's help here!!!!!!!
-    return res.render('post-show.hbs');
+  }).then( savedPost => {
+    console.log("BEER")
+    return res.redirect(`/posts/${req.params.postId}`);
   })
     .catch( err => { console.log(err.message) })
 });

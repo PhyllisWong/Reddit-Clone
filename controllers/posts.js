@@ -24,11 +24,11 @@ router.post('/posts/new', (req, res) => {
 	})
 });
 
-// Show post by posts/:id
+// SHOW post by posts/:id
 router.get('/posts/:id', (req, res) => {
 	// LOOK UP THE POST
 	Post.findById(req.params.id).populate('comments')
-		.then( post => { res.render('post-show', { post }) })
+		.then( post => { res.render('post-show', { post: post }) })
 		.catch((err) => { console.log(err.message) })
 });
 
