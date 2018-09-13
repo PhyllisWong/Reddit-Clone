@@ -17,12 +17,9 @@ router.post('/posts/:postId/comments', (req, res) => {
   })
     .then( post => {
       post.comments.unshift(comment);
-      console.log(post);
-      return post.save()
-
-  }).then( savedPost => {
-    console.log("BEER")
-    return res.redirect(`/posts/${req.params.postId}`);
+      post.save();
+      // CANNOT USE /posts/:postId MUST USE req.params.postId!!!!!
+      return res.redirect(`/posts/${req.params.postId}`);
   })
     .catch( err => { console.log(err.message) })
 });
