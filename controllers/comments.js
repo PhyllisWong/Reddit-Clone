@@ -7,12 +7,9 @@ const Post = require('../models/posts');
 // Make a new comment
 router.post('/posts/:postId/comments', (req, res) => {
   // console.log('--- posts/:postId/comments ---');
-  // console.log(req.body);
-
   const comment = new Comment(req.body);
 
   comment.save().then( comment => {
-    // console.log(Post)
     return Post.findById(req.params.postId)
   })
     .then( post => {
