@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const postController = require('./controllers/posts.js');
 const commentsController = require('./controllers/comments.js');
+const authController = require('./controllers/auth');
 
 // Port
 const port = process.env.PORT || 3000;
@@ -36,6 +37,7 @@ mongoose.set('debug', true);
 // ROUTES
 app.use('/', postController);
 app.use('/',  commentsController);
+app.use('/', authController);
 
 
 // Server

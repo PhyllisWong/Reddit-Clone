@@ -11,3 +11,30 @@
 	/*background: dodgerblue !important;*/
 	.grayscale { filter: grayscale(100%); }
 }
+
+.container {
+	margin: auto;
+
+}
+
+span {
+	width: 100%;
+}
+
+.btn-default {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.signup-btn {
+	background-color: aquamarine;
+}
+
+
+
+.signup-form {
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
