@@ -24,8 +24,7 @@ describe('Posts', () => {
             Post.find((err, posts) => {
               postCount.should.be.equal(posts.count + 1);
               res.should.have.status(200);
-              done();
-            });
+              done();  // ends anything that is async
           });
       });
     });
