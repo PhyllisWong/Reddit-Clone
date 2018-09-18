@@ -12,7 +12,7 @@ const PostSchema = new Schema({
 });
 
 // FIXME: dates not saved in db
-PostSchema.pre('save', (next) => {
+PostSchema.pre('save', function(next) {
 	// SET createdAt AND updatedAt
 	const now = new Date();
 	this.updatedAt = now;
