@@ -11,8 +11,8 @@ const PostSchema = new Schema({
 	comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
 });
 
-// FIXME: dates not saved in db
-PostSchema.pre('save', function(next) { // Don't use arrow syntax here
+// Don't use arrow syntax when using this key word
+PostSchema.pre('save', function(next) {
 	// SET createdAt AND updatedAt
 	const now = new Date();
 	this.updatedAt = now;
