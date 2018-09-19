@@ -50,3 +50,19 @@ span {
 .text-right {
 	margin-top: 1em;
 }
+
+.nav-links {
+	align-items: baseline;
+}
+
+.page-title {
+	font-family: "Helvetica Neue", sans-serif;
+	font-size: 48px;
+	margin-bottom: -.5em;
+}
+
+.page-subtitle {
+	font-family: "Helvetica Neue";
+	font-size: 24px;
+	padding-bottom: 2rem;
+}
