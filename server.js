@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const hbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const path = require('path');
 const postController = require('./controllers/posts.js');
@@ -15,6 +17,7 @@ const port = process.env.PORT || 3000;
 
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
 
 // express-handlebars
 app.engine('hbs', hbs({defaultLayout: 'main', extname: 'hbs'}));
