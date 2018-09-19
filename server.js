@@ -24,6 +24,13 @@ app.set('view engine', 'hbs');
 app.use(express.static('./public'));
 
 
+
+// ROUTES
+app.use('', postController);
+app.use('',  commentsController);
+app.use('', authController);
+
+
 //******************   NEW WAY    ********************//
 // Mongoose Connection
 const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/reddit-clone";
@@ -31,14 +38,6 @@ mongoose.connect(
   mongoUri, { useNewUrlParser: true }
 );
 mongoose.set('debug', true);
-
-
-
-// ROUTES
-app.use('/', postController);
-app.use('/',  commentsController);
-app.use('/', authController);
-
 
 // Server
 app.listen(port, () => {
